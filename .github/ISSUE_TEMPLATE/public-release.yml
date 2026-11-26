@@ -1,0 +1,27 @@
+name: Public release
+description: Request uploads/deletes on the public object store
+title: "[Public release] "
+labels: [public-release]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Paste the release manifest below. A maintainer will review it and add
+        the `release-run` label to start the release. See
+        [docs/public-release-workflow.md](../blob/main/docs/public-release-workflow.md)
+        for the manifest format.
+  - type: textarea
+    id: manifest
+    attributes:
+      label: Manifest
+      description: YAML manifest with `uploads` and/or `deletes` lists.
+      render: yaml
+      placeholder: |
+        uploads:
+          - target: some/path
+            sources:
+              - https://example.com/file.img
+        deletes:
+          - target: some/old/path
+    validations:
+      required: true
